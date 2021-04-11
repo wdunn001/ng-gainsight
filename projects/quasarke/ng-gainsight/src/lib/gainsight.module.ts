@@ -6,8 +6,9 @@ import { GainsightService } from './gainsight.service';
 declare var aptrinsic: any;
 export const OPTIONS = new InjectionToken<string>('OPTIONS');
 
+// @dynamic
 export function initialize(options: GainsightOptions) {
-  return function () {
+  const res = () => {
     const source = options.scriptSource ? options.scriptSource : 'https://web-sdk.aptrinsic.com/api/aptrinsic.js';
     const scriptName: any = 'aptrinsic';
     window[scriptName] = window[scriptName] || ((...args: any[]) => {
@@ -28,6 +29,8 @@ export function initialize(options: GainsightOptions) {
       options.config.account);
     }
   };
+
+  return res;
 }
 
 @NgModule({
