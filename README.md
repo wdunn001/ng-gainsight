@@ -1,27 +1,59 @@
 # NgGainsight
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.0.
+This library is meant to integrate with gainsight px and make it easy for angular developers to use it.
 
-## Development server
+I have no affiliation with gainsight however I needed to implement there product and there normal solution wasn't great and there were no alternatives so I made this.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Install
 
-## Code scaffolding
+```
+npm i --save @quasarke/ng-gainsight
+```
+in a module
+```
+  imports: [
+    ...
+    GainsightModule.forRoot({ tagKey: 'XX-XXXXXX' })
+    ...
+  ],
+```
+in a componet or service once you have account and user data
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+  constructor(private gainsight: GainsightService) {
+    this.gainsight.initGainSight({ user:{ id: '1', email: 'bob@bob.com'}, account: {id:'1', name:'acme'}})
+  }
+```
+There is also a pipe that allows you to add classes easily in the gpx format
 
-## Build
+```
+<a [ngClass]="'example' | gainsight: 'gainsight'" target="_blank" rel="noopener" href="https://quasarke.com"></a>
+```
+the class outputs as gpx-gainsight-example if the featurepath is provile or gpx-example if none is
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+There are alternative ways of loading this library if needed and the script source used can be overridden 
 
-## Running unit tests
+```
+GainsightModule.forRoot({ tagKey: 'XX-XXXXXX',config: { user:{ id: '1', email: 'bob@bob.com'}, account: {id:'1', name:'acme'}} , scriptSource: 'https://web-sdk.aptrinsic.com/api/aptrinsic.js' })
+```
+will load all the data on module import
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+alternatively you can load the module without for root
 
-## Running end-to-end tests
+```
+   imports: [
+    ...
+    GainsightModule
+    ...
+  ],
+```
+end call the functions in the service
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```
+  constructor(private gainsight: GainsightService) {
+    this.gainsight.InjectGainSight('XX-XXXXX'); 
+    this.gainsight.initGainSight({ user:{ id: '1', email: 'bob@bob.com'}, account: {id:'1', name:'acme'}})
+  }
+```
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
