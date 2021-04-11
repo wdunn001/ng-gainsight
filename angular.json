@@ -122,6 +122,46 @@
           }
         }
       }
+    },
+    "@quasarke/ng-gainsight": {
+      "projectType": "library",
+      "root": "projects/quasarke/ng-gainsight",
+      "sourceRoot": "projects/quasarke/ng-gainsight/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/quasarke/ng-gainsight/tsconfig.lib.json",
+            "project": "projects/quasarke/ng-gainsight/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/quasarke/ng-gainsight/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/quasarke/ng-gainsight/src/test.ts",
+            "tsConfig": "projects/quasarke/ng-gainsight/tsconfig.spec.json",
+            "karmaConfig": "projects/quasarke/ng-gainsight/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/quasarke/ng-gainsight/tsconfig.lib.json",
+              "projects/quasarke/ng-gainsight/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ng-gainsight"
