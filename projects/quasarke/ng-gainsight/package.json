@@ -1,6 +1,10 @@
 {
   "name": "@quasarke/ng-gainsight",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "scripts": {
+    "build-lib": "ng build @quasarke/ng-gainsight --prod",
+    "publish-lib": "npm publish ../../../dist/quasarke/ng-gainsight --access=public"
+  },
   "peerDependencies": {
     "@angular/common": "^11.0.9",
     "@angular/core": "^11.0.9"
@@ -8,6 +12,9 @@
   "dependencies": {
     "tslib": "^2.0.0"
   },
-  "author": {"name": "William Dunn", "email": "William.Dunn@Quasarke.com"},
+  "author": {
+    "name": "William Dunn",
+    "email": "William.Dunn@Quasarke.com"
+  },
   "homepage": "https://github.com/wdunn001/ng-gainsight/tree/main/projects/quasarke/ng-gainsight"
 }
