@@ -2,7 +2,6 @@
 
 This library is meant to integrate with gainsight px and make it easy for angular developers to use it.
 
-I have no affiliation with gainsight however I needed to implement there product and there normal solution wasn't great and there were no alternatives so I made this.
 
 ## Install
 
